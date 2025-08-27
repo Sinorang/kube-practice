@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AppController {
     @GetMapping("/")
     public String home() {
-        System.out.println("Hello World!"); // 추후 디버깅용
+        System.out.println("Hello World!"); // 추후 디버깅용 소스
         return "Hello World!";
     }
 }
