@@ -24,8 +24,14 @@ spec:
           imagePullPolicy: IfNotPresent # 로컬에서 이미지를 먼저 가져온다. 없으면 레지스트리에서 가져온다.
           ports:
             - containerPort: 8080  # 컨테이너에서 사용하는 포트를 명시적으로 표현
-          env: # 환경변수 등록
+          env:
             - name: MY_ACCOUNT
-              value: sinorang
+              valueFrom:
+                configMapKeyRef:
+                  name: spring-config # ConfigMap의 이름
+                  key: my-account # ConfigMap에 설정되어 있는 Key값
             - name: MY_PASSWORD
-              value: pwd1234
+              valueFrom:
+                secretKeyRef:
+                  name: spring-secret
+                  key: my-password
